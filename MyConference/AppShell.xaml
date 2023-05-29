@@ -7,7 +7,7 @@
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
-        <Tab Title="Schedule" Icon="tab_schedule.png>
+        <Tab Title="Schedule" Icon="tab_schedule.png ">
             <ShellContent
                 Title="Day 1"
                 ContentTemplate="{DataTemplate pages:SchedulePage}"
@@ -17,7 +17,7 @@
                 ContentTemplate="{DataTemplate pages:SchedulePage}"
                 Route="ScheduleDay2" />
         </Tab>
-        <Tab Title="My Agenda" Icon="tab_agenda.png>
+        <Tab Title="My Agenda" Icon="tab_agenda.png ">
             <ShellContent
                 Title="Day 1"
                 ContentTemplate="{DataTemplate pages:AgendaPage}"
