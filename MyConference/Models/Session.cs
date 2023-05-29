@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace Models;
 
-namespace Models;
-
-    public class Session : ObservableObject
+    public partial class Session : ObservableObject
     {
 
     //Static
