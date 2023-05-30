@@ -3,7 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Pages.SchedulePage"
              xmlns:viewmodel="clr-namespace:ViewModels"
+             xmlns:model="clr-namespace:Models"
              x:DataType="viewmodel:ScheduleViewModel"
+             
              Title="Schedule">
-    <ListView ItemsSource=""
+    <ListView ItemsSource="{Binding Schedule}"
+              HasUnevenRows="True"
+              IsGroupingEnabled="True"
+              GroupDisplayBinding="{Binding Key}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="model:Session">
+                <ViewCell>
+                    <Grid>
+                        <Frame>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" />
+                                <Label Text="{Binding Title}" />
+                                <Label Text="{Binding Title}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>
