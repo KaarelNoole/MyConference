@@ -8,12 +8,12 @@ using static Jeffsum.Goldblum;
 
 namespace ViewModels;
 
-public partial class AgendaViewModel : ObservableObject
+public partial class ScheduleViewModel : ObservableObject
 {
     public int Day { get; set; }
-    public ObservableRangeCollection<Grouping<string, Session>> Agenda { get; } = new ObservableRangeCollection<Grouping<string, Session>>();
+    public ObservableRangeCollection<Grouping<string, Session>> Schedule { get; } = new ();
     Random random = new();
-    public AgendaViewModel()
+    public ScheduleViewModel()
     {
 
     }
@@ -25,10 +25,14 @@ public partial class AgendaViewModel : ObservableObject
         var sessions = new List<Session>();
         var start = new DateTime(2022, 9, Day, 8, 30, 0);
         for (int i = 0; i < sessionCount.Length; i++)
-        
             AddItems(sessionCount[i], i);
-        
 
+        var sorted = from session in sessions
+                     orderby session.Start
+                     group session by session.StartTimeDisplay into sessionGroup
+                     select new Grouping<string, Session>(sessionGroup.Key, sessionGroup);
+
+        Schedule.AddRange(sorted);
 
         return Task.CompletedTask;
 
