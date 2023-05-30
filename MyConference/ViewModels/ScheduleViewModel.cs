@@ -23,7 +23,7 @@ public partial class ScheduleViewModel : ObservableObject
     {
         var sessionCount = new[] { 1, 2, 4, 4, 4, 4, 4 };
         var sessions = new List<Session>();
-        var start = new DateTime(2022, 9, Day, 8, 30, 0);
+        var start = new DateTime(2022,9, Day,8,30,0);
         for (int i = 0; i < sessionCount.Length; i++)
             AddItems(sessionCount[i], i);
 
