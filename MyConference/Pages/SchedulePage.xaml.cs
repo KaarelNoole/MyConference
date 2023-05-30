@@ -3,26 +3,37 @@ using ViewModels;
 
 namespace Pages;
 
+public partial class ScheduleDay1Page : SchedulePage
+{
+	public ScheduleDay1Page(ScheduleViewModel vm) : base()
+	{
+		vm.Day = 1;
+		BindingContext = vm;
+	}
+}
 
+public partial class ScheduleDay2Page : SchedulePage
+{
+    public ScheduleDay2Page(ScheduleViewModel vm) : base()
+    {
+        vm.Day = 1;
+        BindingContext = vm;
+    }
+}
 public partial class SchedulePage : ContentPage
 {
-	readonly ScheduleViewModel vm;
-	public static int Day { get; set; }
+	ScheduleViewModel vm;
 
-    public SchedulePage(ScheduleViewModel vm)
+    ScheduleViewModel VM => vm ??= BindingContext as ScheduleViewModel;
+    public SchedulePage()
 	{
 		InitializeComponent();
-
-		Day++;
-		vm.Day = Day;
-
-		BindingContext = this.vm = vm;
 	}
 
-	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+	protected override async void OnAppearing()
 	{
-		base.OnNavigatedTo(args);
-        if (vm.Schedule.Count == 0)
-            await vm.LoadDataCommand.ExecuteAsync(null);
+		base.OnAppearing();
+        if (VM.Schedule.Count == 0)
+            await VM.LoadDataCommand.ExecuteAsync(null);
     }
 }
