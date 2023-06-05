@@ -8,7 +8,8 @@ public partial class ScheduleDay1Page : SchedulePage
 	public ScheduleDay1Page(ScheduleViewModel vm) : base()
 	{
 		vm.Day = 1;
-		BindingContext = vm;
+        Title = "Schedule - Day 1";
+        BindingContext = vm;
 	}
 }
 
@@ -16,7 +17,8 @@ public partial class ScheduleDay2Page : SchedulePage
 {
     public ScheduleDay2Page(ScheduleViewModel vm) : base()
     {
-        vm.Day = 1;
+        vm.Day = 2;
+		Title = "Schedule - Day 2";
         BindingContext = vm;
     }
 }
@@ -36,4 +38,9 @@ public partial class SchedulePage : ContentPage
         if (VM.Schedule.Count == 0)
             await VM.LoadDataCommand.ExecuteAsync(null);
     }
+
+	protected override void OnNavigatedTo(NavigatedToEventArgs args)
+	{
+		base.OnNavigatedTo(args);
+	}
 }
